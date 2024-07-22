@@ -6,7 +6,7 @@ DROP DATABASE IF exists hotel_db;
 CREATE database hotel_db;
 use hotel_db;
 
--- Crear tabla Hotel
+-- Creamos la tabla Hotel
 CREATE TABLE Hotel (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE Hotel (
     email VARCHAR(100) NOT NULL
 );
 
--- Crear tabla Habitación
+-- Creamos tabla Habitación
 CREATE TABLE Habitacion (
     id INT AUTO_INCREMENT PRIMARY KEY,
     numero VARCHAR(10) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE Habitacion (
     FOREIGN KEY (id_hotel) REFERENCES Hotel(id)
 );
 
--- Crear tabla Cliente
+-- Creamos la tabla Cliente
 CREATE TABLE Cliente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE Cliente (
     email VARCHAR(100) NOT NULL
 );
 
--- Crear tabla Reserva
+-- Creamos tabla Reserva
 CREATE TABLE Reserva (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_cliente INT,
@@ -46,7 +46,7 @@ CREATE TABLE Reserva (
     FOREIGN KEY (id_habitacion) REFERENCES Habitacion(id)
 );
 
--- Crear tabla Servicio
+-- Creamos tabla Servicio
 CREATE TABLE Servicio (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE Servicio (
     precio DECIMAL(10, 2) NOT NULL
 );
 
--- Crear tabla intermedia Reserva_Servicio
+-- Creamosla tabla intermedia Reserva_Servicio
 CREATE TABLE Reserva_Servicio (
     id_reserva INT,
     id_servicio INT,
@@ -64,7 +64,7 @@ CREATE TABLE Reserva_Servicio (
     PRIMARY KEY (id_reserva, id_servicio)
 );
 
--- Insertar en Hotel
+-- Insertamos datos en Hotel
 INSERT INTO Hotel (nombre, direccion, telefono, email) VALUES
 ('Hotel Mandarin', 'Calle Mandarin 123, Madrid', '911234567', 'contacto@mandarin.com'),
 ('Hotel Espe', 'Avenida Diagon 400, Barcelona', '934567890', 'info@espe.com');
@@ -76,11 +76,11 @@ INSERT INTO Habitacion (numero, tipo, capacidad, precio, id_hotel) VALUES
 ('201', 'Suite', 4, 150.00, 2),
 ('202', 'Doble', 2, 80.00, 2);
 
--- Insertar datos en Cliente
+-- Insertamos datos en Cliente
 INSERT INTO Cliente (nombre, apellidos, telefono, email) VALUES
 ('Sergi', 'Pere', '699123456', 'sergi.pere@gmail.com'),
 
--- Insertar datos ficticios en Servicio
+-- Insertamos datos en Servicio
 INSERT INTO Servicio (nombre, descripcion, precio) VALUES
 ('Desayuno', 'Desayuno buffet', 10.00),
 ('piscina', 'Acceso a piscina hotel', 30.00);
@@ -91,7 +91,7 @@ INSERT INTO Reserva_Servicio (id_reserva, id_servicio, cantidad) VALUES
 (2, 2, 3);
 ('Silvia', 'García', '698987654', 'silvia.garcia@gmail.com');
 
--- Insertar datos en Reserva
+-- Insertamos datos en Reserva
 INSERT INTO Reserva (id_cliente, id_habitacion, fecha_inicio, fecha_fin) VALUES
 (1, 1, '2024-08-01', '2024-08-05'),
 (2, 3, '2024-08-10', '2024-08-15');
